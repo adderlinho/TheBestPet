@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvMascota"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="@dimen/cardview_default_elevation"
+    app:cardCornerRadius="@dimen/cardview_default_radius"
+    android:layout_marginBottom="@dimen/activity_vertical_padding">
+
+    <RelativeLayout
+        android:id="@+id/rlMascota"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imgvMascotaCV"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/imgvMascota_sizeCV"
+            android:scaleType="centerCrop"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/curso3" />
+
+        <ImageButton
+            android:id="@+id/imgbLikeCV"
+            android:layout_width="@dimen/imgb_sizeCV"
+            android:layout_height="@dimen/imgb_sizeCV"
+            android:scaleType="centerCrop"
+            android:background="@drawable/bone_like"
+            android:layout_below="@+id/imgvMascotaCV"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:id="@+id/tvMascotaNameCV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tvName_CV"
+            android:textSize="@dimen/tv_sizeCV"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/imgvMascotaCV"
+            android:layout_toRightOf="@+id/imgbLikeCV"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/tvMascotaLikesCV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:textSize="@dimen/tv_sizeCV"
+            android:textStyle="bold"
+            android:layout_below="@+id/imgvMascotaCV"
+            android:layout_toLeftOf="@+id/imgbLikesCV"
+            android:layout_centerVertical="true"/>
+
+        <ImageButton
+            android:id="@+id/imgbLikesCV"
+            android:layout_width="@dimen/imgb_sizeCV"
+            android:layout_height="@dimen/imgb_sizeCV"
+            android:scaleType="centerCrop"
+            android:background="@drawable/bone_likes"
+            android:layout_below="@+id/imgvMascotaCV"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">The Best Pet</string>
+    <string name="tvTituloInicio">¡ The Best Pet !</string>
+    <string name="tvName_CV">OSO</string>
+    <string name="btnInicio">Comenzar</string>
+    <string name="pmascotasExtra">mascota_extra</string>
+    <string name="pmascotas">mascotas</string>
 </resources>

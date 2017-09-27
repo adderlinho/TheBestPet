@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\AdderlyS\Documents\Android Studio\Optel\TheBestPet\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="C:\Users\AdderlyS\Documents\Android Studio\Optel\TheBestPet\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_529f4bed6162c68f166b8452529cbb9447950325\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\AdderlyS\Documents\Android Studio\Optel\TheBestPet\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="5b664269c52a0eeddfbce14676b26364a35e8544">
+        <dex dex="C:\Users\AdderlyS\Documents\Android Studio\Optel\TheBestPet\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_71055b89621407d122baaae684b106b0ff97940a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\AdderlyS\.android\build-cache\c8d5e1fce9837ae514525d6dbe36db0122768786\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="e176fd06c2ad5b50a2f5cb4de6000a83a7cb48f5">
+        <dex dex="C:\Users\AdderlyS\Documents\Android Studio\Optel\TheBestPet\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ec76c37c228d4e132122634789be87b505b59b24\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\AdderlyS\.android\build-cache\56d585830b608d4a2454b52527b2f65b3521d565\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="c4f45092eee6cdf1a5dbd597b2b6819be652ce2e">
+        <dex dex="C:\Users\AdderlyS\Documents\Android Studio\Optel\TheBestPet\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ae9c0c77678cf571f30fc93341588fba2b34f94d\classes.dex" />
+    </item>
+
+</items>

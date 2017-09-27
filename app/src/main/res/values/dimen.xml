@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_horizontal_padding">16dp</dimen>
+    <dimen name="activity_vertical_padding">16dp</dimen>
+    <dimen name="actionbar_default_elevation">4dp</dimen>
+    <dimen name="cardview_default_elevation">2dp</dimen>
+    <dimen name="cardview_default_radius">8dp</dimen>
+    <dimen name="imgvMascota_sizeCV">400dp</dimen>
+    <dimen name="imgb_sizeCV">50dp</dimen>
+    <dimen name="tv_sizeCV">40dp</dimen>
+    <dimen name="tv_sizeInicio">40dp</dimen>
+    <dimen name="tv_sizeActionBar">300dp</dimen>
+    <dimen name="tv_textSizeActionBar">25dp</dimen>
+</resources>

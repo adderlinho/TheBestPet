@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/colorPrimary"
+    android:elevation="@dimen/actionbar_default_elevation"
+    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    android:id="@+id/miActionBar"
+    android:paddingRight="@dimen/activity_horizontal_padding"
+    android:paddingLeft="@dimen/activity_horizontal_padding">
+
+    <ImageView
+        android:id="@+id/footprintActionBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        app:srcCompat="@drawable/footprint"
+        android:layout_gravity="left"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:id="@+id/tvAppName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textStyle="bold"
+        android:textSize="@dimen/tv_textSizeActionBar"
+        android:textAlignment="center"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_horizontal"/>
+
+    <ImageButton
+        android:id="@+id/starActionBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        app:srcCompat="@drawable/star"
+        android:layout_centerVertical="true"
+        android:layout_gravity="right"/>
+
+
+</android.support.v7.widget.Toolbar>
