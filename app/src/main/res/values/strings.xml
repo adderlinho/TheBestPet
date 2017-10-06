@@ -1,8 +1,27 @@
 <resources>
     <string name="app_name">The Best Pet</string>
     <string name="tvTituloInicio">¡ The Best Pet !</string>
-    <string name="tvName_CV">OSO</string>
+    <string name="tvName_CV">Balto</string>
     <string name="btnInicio">Comenzar</string>
     <string name="pmascotasExtra">mascota_extra</string>
     <string name="pmascotas">mascotas</string>
+
+    <string name="mcontactos">Contactos</string>
+    <string name="macercade">Acerca de</string>
+
+    <string name="fm_user">Usuario</string>
+    <string name="fm_mail">Correo</string>
+    <string name="fm_message">Mensaje</string>
+    <string name="fm_btn">Enviar</string>
+
+    <string name="txt_mensaje_error">Por favor asegurese de que lleno todos los datos correctamente.</string>
+
+    <string name="txt_acercade_titulo">Acerca de</string>
+    <string name="txt_acercade_titulo2">Desarrollador</string>
+    <string name="txt_acercade_nombre">Nombre: Adderly Sinay</string>
+    <string name="txt_acercade_fecha">Fecha de nacimiento: 1993-07-19</string>
+    <string name="txt_acercade_pais">Pais: Guatemala</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

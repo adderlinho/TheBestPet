@@ -1,39 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relativeLayout_Loading"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:paddingLeft="@dimen/activity_horizontal_padding"
-    android:paddingRight="@dimen/activity_horizontal_padding"
-    android:paddingTop="@dimen/activity_vertical_padding"
-    android:paddingBottom="@dimen/activity_vertical_padding">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imgvMascotaInicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/curso3" />
-
-    <TextView
-        android:id="@+id/tvTituloInicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tvTituloInicio"
-        android:textSize="@dimen/tv_sizeInicio"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/imgvMascotaInicio"/>
-
-    <Button
-        android:id="@+id/btnIniciar"
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="@string/btnInicio"
-        android:layout_alignParentBottom="true"
-        android:theme="@style/BotonStyle"/>
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-</RelativeLayout>
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:paddingRight="@dimen/activity_horizontal_padding"
+            android:paddingLeft="@dimen/activity_horizontal_padding">
+
+            <ImageView
+                android:id="@+id/footprintActionBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                app:srcCompat="@drawable/footprint"
+                android:layout_gravity="left"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/tvAppName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textStyle="bold"
+                android:textSize="@dimen/tv_textSizeActionBar"
+                android:textAlignment="center"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_horizontal"/>
+
+            <ImageButton
+                android:id="@+id/starActionBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                app:srcCompat="@drawable/star"
+                android:layout_centerVertical="true"
+                android:layout_gravity="right"/>
+
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.design.widget.TabLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    </android.support.v4.view.ViewPager>
+
+</android.support.design.widget.CoordinatorLayout>
 

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvMascota"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="@dimen/cardview_default_elevation"
+    app:cardCornerRadius="@dimen/cardview_default_radius"
+    android:layout_marginBottom="@dimen/activity_vertical_padding"
+    android:layout_marginRight="@dimen/activity_horizontal_padding"
+    android:layout_marginTop="@dimen/activity_vertical_padding"
+    android:layout_marginLeft="@dimen/activity_horizontal_padding">
+
+    <RelativeLayout
+        android:id="@+id/rlMascota"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imgvMascotaCV"
+            android:layout_width="@dimen/recyclerview_item_size_image"
+            android:layout_height="@dimen/recyclerview_item_size_image"
+            android:scaleType="centerCrop"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/curso3" />
+
+        <TextView
+            android:id="@+id/tvMascotaLikesCV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:textSize="@dimen/rv_tv_size"
+            android:textStyle="bold"
+            android:layout_below="@+id/imgvMascotaCV"
+            android:layout_toLeftOf="@+id/imgbLikesCV"/>
+
+        <ImageButton
+            android:id="@+id/imgbLikesCV"
+            android:layout_width="@dimen/imgb_rv_size"
+            android:layout_height="@dimen/imgb_rv_size"
+            android:scaleType="centerCrop"
+            android:background="@drawable/bone_likes"
+            android:layout_below="@+id/imgvMascotaCV"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

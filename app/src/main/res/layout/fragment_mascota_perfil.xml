@@ -1,0 +1,45 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="asoftwaresolution.thebestpet.fragment.MascotaPerfil"
+    android:paddingTop="@dimen/activity_vertical_padding"
+    android:paddingBottom="@dimen/activity_vertical_padding"
+    android:paddingLeft="@dimen/activity_horizontal_padding"
+    android:paddingRight="@dimen/activity_horizontal_padding">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/cimgv_perfil"
+            android:layout_width="@dimen/cimgv_size"
+            android:layout_height="@dimen/cimgv_size"
+            android:src="@drawable/balto_perfil"
+            app:civ_border_color="@color/colorPrimary"
+            app:civ_border_width="4dp"
+            app:civ_shadow="true"
+            app:civ_shadow_radius="10"
+            app:civ_shadow_color="@color/colorAccent"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/tv_MascotaNamePerfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tvName_CV"
+            android:layout_below="@+id/cimgv_perfil"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/rv_tv_size"
+            android:textStyle="bold"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvMascotaPerfil"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tv_MascotaNamePerfil"/>
+    </RelativeLayout>
+
+</FrameLayout>

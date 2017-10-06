@@ -5,10 +5,29 @@
     <dimen name="actionbar_default_elevation">4dp</dimen>
     <dimen name="cardview_default_elevation">2dp</dimen>
     <dimen name="cardview_default_radius">8dp</dimen>
+    <dimen name="recyclerview_item_size_image">100dp</dimen>
     <dimen name="imgvMascota_sizeCV">400dp</dimen>
     <dimen name="imgb_sizeCV">50dp</dimen>
+    <dimen name="imgb_rv_size">25dp</dimen>
     <dimen name="tv_sizeCV">40dp</dimen>
+    <dimen name="rv_tv_size">20dp</dimen>
     <dimen name="tv_sizeInicio">40dp</dimen>
     <dimen name="tv_sizeActionBar">300dp</dimen>
     <dimen name="tv_textSizeActionBar">25dp</dimen>
+
+    <dimen name="cimgv_size">150dp</dimen>
+
+
+    <dimen name="tv_textSizeAcercadeTitle1">40sp</dimen>
+    <dimen name="tv_textSizeAcercadeTitle2">20sp</dimen>
+    <dimen name="tv_textSizeAcercadeNombre">15sp</dimen>
+    <dimen name="tv_textSizeAcercadeFecha">15sp</dimen>
+    <dimen name="tv_textSizeAcercadePais">15sp</dimen>
+
+
+    <dimen name="tv_PaddingTopAcercadeTitle1">150dp</dimen>
+    <dimen name="tv_PaddingTopAcercadeTitle2">20dp</dimen>
+    <dimen name="tv_PaddingTopAcercadeNombre">30dp</dimen>
+    <dimen name="tv_PaddingTopAcercadeFecha">30dp</dimen>
+    <dimen name="tv_PaddingTopAcercadePais">30dp</dimen>
 </resources>

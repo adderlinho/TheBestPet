@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="asoftwaresolution.thebestpet.Acercade">
+
+    <include android:id="@+id/miActionBar"
+        layout="@layout/actionbar"
+        android:paddingRight="@dimen/activity_horizontal_padding"
+        android:paddingBottom="@dimen/activity_vertical_padding"
+        android:paddingLeft="@dimen/activity_horizontal_padding">
+    </include>
+
+    <TextView
+        android:id="@+id/tvTitleAD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_acercade_titulo"
+        android:textSize="@dimen/tv_textSizeAcercadeTitle1"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="@dimen/tv_PaddingTopAcercadeTitle1"/>
+
+    <TextView
+        android:id="@+id/tvTitleAD2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_acercade_titulo2"
+        android:textSize="@dimen/tv_textSizeAcercadeTitle2"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="@dimen/tv_PaddingTopAcercadeTitle2"
+        android:layout_below="@+id/tvTitleAD"/>
+
+    <TextView
+        android:id="@+id/tvNameAD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_acercade_nombre"
+        android:textSize="@dimen/tv_textSizeAcercadeNombre"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="@dimen/tv_PaddingTopAcercadeNombre"
+        android:layout_below="@+id/tvTitleAD2"/>
+
+    <TextView
+        android:id="@+id/tvDateAD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_acercade_fecha"
+        android:textSize="@dimen/tv_textSizeAcercadeFecha"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="@dimen/tv_PaddingTopAcercadeFecha"
+        android:layout_below="@+id/tvNameAD"/>
+
+    <TextView
+        android:id="@+id/tvCountryAD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_acercade_pais"
+        android:textSize="@dimen/tv_textSizeAcercadePais"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="@dimen/tv_PaddingTopAcercadePais"
+        android:layout_below="@+id/tvDateAD"/>
+
+</RelativeLayout>
