@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 
 public class Mascota implements Serializable {
-
+    private int id;
     private int imagen;
     private String nombre;
     private int likes;
@@ -18,6 +18,17 @@ public class Mascota implements Serializable {
         this.likes = likes;
     }
 
+    public Mascota() {
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     public int getImagen() {
         return imagen;
     }

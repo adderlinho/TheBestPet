@@ -1,6 +1,7 @@
 package asoftwaresolution.thebestpet.adaptadores;
 
 import android.app.Activity;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,9 +9,11 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import asoftwaresolution.thebestpet.db.ConstructorMascotas;
 import asoftwaresolution.thebestpet.pojo.Mascota;
 import asoftwaresolution.thebestpet.R;
 
@@ -20,8 +23,8 @@ import asoftwaresolution.thebestpet.R;
 
 public class MascotasAdaptador extends RecyclerView.Adapter<MascotasAdaptador.MascotaViewHolder> {
 
-    ArrayList<Mascota> mascotas;
-    Activity activity;
+    private ArrayList<Mascota> mascotas;
+    private Activity activity;
 
     public MascotasAdaptador(ArrayList<Mascota> mascotas, Activity activity)
     {
@@ -47,8 +50,12 @@ public class MascotasAdaptador extends RecyclerView.Adapter<MascotasAdaptador.Ma
         holder.imgbLikeCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mascota.setLikes(mascota.getLikes() + 1);
-                holder.tvMascotaLikesCV.setText(Integer.toString(mascota.getLikes()));
+                Toast.makeText(activity, "Diste like a " + mascota.getNombre(), Toast.LENGTH_SHORT).show();
+                ConstructorMascotas constructorMascotas = new ConstructorMascotas(activity);
+                constructorMascotas.darLikeMascota(mascota);
+                //mascota.setLikes(mascota.getLikes() + 1);
+                ;
+                holder.tvMascotaLikesCV.setText(Integer.toString(constructorMascotas.obtenerLikesMascota(mascota)));
             }
         });
     }

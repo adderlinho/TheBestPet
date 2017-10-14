@@ -11,6 +11,7 @@
 
     <string name="fm_user">Usuario</string>
     <string name="fm_mail">Correo</string>
+    <string name="fm_password_email">Contraseña del correo</string>
     <string name="fm_message">Mensaje</string>
     <string name="fm_btn">Enviar</string>
 

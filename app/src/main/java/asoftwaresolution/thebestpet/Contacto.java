@@ -13,6 +13,7 @@ public class Contacto extends AppCompatActivity {
 
     private TextInputEditText form_username;
     private TextInputEditText form_email;
+    private TextInputEditText form_password_email;
     private TextInputEditText form_message;
     private Button btnEnviar;
 
@@ -28,6 +29,7 @@ public class Contacto extends AppCompatActivity {
 
         form_username = (TextInputEditText) findViewById(R.id.form_username);
         form_email = (TextInputEditText) findViewById(R.id.form_email);
+        form_email = (TextInputEditText) findViewById(R.id.form_password_email);
         form_message = (TextInputEditText) findViewById(R.id.form_message);
         btnEnviar = (Button) findViewById(R.id.btnEnviar);
 
@@ -52,13 +54,14 @@ public class Contacto extends AppCompatActivity {
                 else
                 {
                     //Creating SendMail object
-                    SendMail sm = new SendMail(Contacto.this, form_email.getText().toString(), form_username.getText().toString(), form_message.getText().toString());
+                    SendMail sm = new SendMail(Contacto.this, form_email.getText().toString(), form_password_email.getText().toString(), form_username.getText().toString(), form_message.getText().toString());
 
                     //Executing sendmail to send email
                     sm.execute();
 
                     form_username.setText("");
                     form_email.setText("");
+                    form_password_email.setText("");
                     form_message.setText("");
                 }
             }

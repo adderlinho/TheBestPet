@@ -20,6 +20,15 @@
         <dex dex="C:\Users\AdderlyS\Documents\Android Studio\Curso\TheBestPet\app\build\intermediates\pre-dexed\debug\android-mail-1.6.0_c7129dca1fe559f4feb4dda458994f408111dcac.jar" />
     </item>
     <item
+        is-multidex="true"
+        jar="C:\Users\AdderlyS\Documents\Android Studio\Curso\TheBestPet\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="C:\Users\AdderlyS\Documents\Android Studio\Curso\TheBestPet\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_72981612f168a0f512bfc4d64b954c840f76fa63\classes.dex" />
+    </item>
+    <item
         is-multidex="false"
         jar="C:\Users\AdderlyS\.android\build-cache\763d00003bcf9ec6413d56b09820390039ee96bb\output\jars\classes.jar"
         jumboMode="false"
@@ -63,6 +72,15 @@
         revision="26.0.1"
         sha1="a8340f8c17337c864648c13abe1416d34c80ec14">
         <dex dex="C:\Users\AdderlyS\Documents\Android Studio\Curso\TheBestPet\app\build\intermediates\pre-dexed\debug\classes_259301107e3625d1bddde5a697693e6665b71d59.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\AdderlyS\Documents\Android Studio\Curso\TheBestPet\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="5840f8eed4e20d8755ce288c8cc8c7d35aab2e5c">
+        <dex dex="C:\Users\AdderlyS\Documents\Android Studio\Curso\TheBestPet\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_b1d4cc46dd05de32b04553ecffd77f0d648adae8\classes.dex" />
     </item>
 
 </items>
