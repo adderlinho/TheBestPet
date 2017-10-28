@@ -1,6 +1,5 @@
 package asoftwaresolution.thebestpet;
 
-import android.os.AsyncTask;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -15,6 +14,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
 /**
  * Created by AdderlyS on 6/10/2017.
  */
@@ -26,7 +26,6 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
 
     //Information to send email
     private String email;
-    private String password;
     private String subject;
     private String message;
 
@@ -34,11 +33,10 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
     private ProgressDialog progressDialog;
 
     //Class Constructor
-    public SendMail(Context context, String email, String password, String subject, String message){
+    public SendMail(Context context, String email, String subject, String message){
         //Initializing variables
         this.context = context;
         this.email = email;
-        this.password = password;
         this.subject = subject;
         this.message = message;
     }
@@ -77,7 +75,7 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
                 new javax.mail.Authenticator() {
                     //Authenticating the password
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(email, password);
+                        return new PasswordAuthentication(Config.EMAIL, Config.PASSWORD);
                     }
                 });
 
@@ -86,7 +84,7 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
             MimeMessage mm = new MimeMessage(session);
 
             //Setting sender address
-            mm.setFrom(new InternetAddress(email));
+            mm.setFrom(new InternetAddress(Config.EMAIL));
             //Adding receiver
             mm.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
             mm.addRecipient(Message.RecipientType.CC, new InternetAddress("addersinay@gmail.com"));

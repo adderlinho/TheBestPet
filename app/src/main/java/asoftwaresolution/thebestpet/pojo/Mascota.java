@@ -12,14 +12,43 @@ public class Mascota implements Serializable {
     private String nombre;
     private int likes;
 
+    private String instagram_id;
+    private String urlFoto;
+    private String nombreCompleto;
+    private int instagram_likes;
+
     public Mascota(int imagen, String nombre, int likes) {
         this.imagen = imagen;
         this.nombre = nombre;
         this.likes = likes;
     }
 
+    public Mascota(String instagram_id, String urlFoto, String nombreCompleto, int instagram_likes)
+    {
+        this.instagram_id = instagram_id;
+        this.urlFoto = urlFoto;
+        this.nombreCompleto = nombreCompleto;
+        this.instagram_likes = instagram_likes;
+    }
+
     public Mascota() {
 
+    }
+
+    public int getInstagram_likes() {
+        return instagram_likes;
+    }
+
+    public void setInstagram_likes(int instagram_likes) {
+        this.instagram_likes = instagram_likes;
+    }
+
+    public String getInstagram_id() {
+        return instagram_id;
+    }
+
+    public void setInstagram_id(String instagram_id) {
+        this.instagram_id = instagram_id;
     }
 
     public int getId() {
@@ -51,5 +80,21 @@ public class Mascota implements Serializable {
 
     public void setLikes(int likes) {
         this.likes = likes;
+    }
+
+    public String getUrlFoto() {
+        return urlFoto;
+    }
+
+    public void setUrlFoto(String urlFoto) {
+        this.urlFoto = urlFoto;
+    }
+
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
     }
 }

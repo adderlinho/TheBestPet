@@ -34,6 +34,7 @@ public class ConstructorMascotas {
         mascotas.add(new Mascota(R.drawable.dog9, "Simba", 5));
         mascotas.add(new Mascota(R.drawable.dog10, "Cookie", 7));*/
         BaseDatos db = new BaseDatos(context);
+        //db.limpiarDB();
         insertarMascotas(db);
         return db.obtenerTodasLasMascotas();
     }

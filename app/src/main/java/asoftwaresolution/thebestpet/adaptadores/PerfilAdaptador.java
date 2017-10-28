@@ -9,6 +9,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import asoftwaresolution.thebestpet.R;
@@ -38,8 +40,12 @@ public class PerfilAdaptador extends RecyclerView.Adapter<PerfilAdaptador.Mascot
     @Override
     public void onBindViewHolder(final MascotaViewHolder holder, int position) {
         final Mascota mascota = mascotas.get(position);
-        holder.imgvMascotaCV.setImageResource(mascota.getImagen());
-        holder.tvMascotaLikesCV.setText(Integer.toString(mascota.getLikes()));
+        //holder.imgvMascotaCV.setImageResource(mascota.getImagen());
+                Picasso.with(activity)
+                .load(mascota.getUrlFoto())
+                .placeholder(R.drawable.balto)
+                .into(holder.imgvMascotaCV);
+        holder.tvMascotaLikesCV.setText(Integer.toString(mascota.getInstagram_likes()));
         holder.imgbLikesCV.setImageResource(R.drawable.bone_likes);
     }
 

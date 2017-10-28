@@ -70,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent intentSettings = new Intent(MainActivity.this, Acercade.class);
                 startActivity(intentSettings);
                 break;
+            case R.id.mConfigurar:
+                Intent intentConfig = new Intent(MainActivity.this, ActivityConfiguracion.class);
+                startActivity(intentConfig);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

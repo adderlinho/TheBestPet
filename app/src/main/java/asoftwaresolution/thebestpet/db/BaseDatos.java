@@ -135,4 +135,10 @@ public class BaseDatos extends SQLiteOpenHelper {
 
         return favoritas;
     }
+
+    public void limpiarDB() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(ConstantesBaseDatos.TABLE_MASCOTA, null, null);
+        db.close();
+    }
 }

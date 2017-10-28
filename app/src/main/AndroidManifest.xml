@@ -27,15 +27,8 @@
                 android:name="android:support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".Contacto"
-        android:parentActivityName=".MainActivity">
-
-        <!-- Soporte para versiones 4.0 o menores -->
-        <meta-data
-            android:name="android:support.PARENT_ACTIVITY"
-            android:value=".MainActivity" />
-        </activity>
-        <activity android:name=".Acercade"
+        <activity
+            android:name=".Contacto"
             android:parentActivityName=".MainActivity">
 
             <!-- Soporte para versiones 4.0 o menores -->
@@ -43,6 +36,22 @@
                 android:name="android:support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        <activity
+            android:name=".Acercade"
+            android:parentActivityName=".MainActivity">
+
+            <!-- Soporte para versiones 4.0 o menores -->
+            <meta-data
+                android:name="android:support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".ActivityConfiguracion"
+            android:parentActivityName=".MainActivity">
+
+            <!-- Soporte para versiones 4.0 o menores -->
+            <meta-data
+                android:name="android:support.PARENT_ACTIVITY"
+                android:value=".MainActivity" /></activity>
     </application>
 
 </manifest>

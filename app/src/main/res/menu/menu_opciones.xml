@@ -8,4 +8,8 @@
         android:title="@string/macercade"
         android:orderInCategory="2">
     </item>
+    <item android:id="@+id/mConfigurar"
+        android:title="@string/mconfigurar"
+        android:orderInCategory="3">
+    </item>
 </menu>

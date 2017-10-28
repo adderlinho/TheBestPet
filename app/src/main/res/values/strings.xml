@@ -6,8 +6,11 @@
     <string name="pmascotasExtra">mascota_extra</string>
     <string name="pmascotas">mascotas</string>
 
+    <string name="username_instagram">username</string>
+
     <string name="mcontactos">Contactos</string>
     <string name="macercade">Acerca de</string>
+    <string name="mconfigurar">Configurar Cuenta</string>
 
     <string name="fm_user">Usuario</string>
     <string name="fm_mail">Correo</string>
