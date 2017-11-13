@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import asoftwaresolution.thebestpet.fragment.MascotaPerfil;
+import asoftwaresolution.thebestpet.restApi.ConstantesRestApi;
 import asoftwaresolution.thebestpet.restApi.EndpointsApi;
 
 public class ActivityConfiguracion extends AppCompatActivity {
@@ -41,7 +42,8 @@ public class ActivityConfiguracion extends AppCompatActivity {
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ActivityConfiguracion.this, MascotaPerfil.class);
+                ConstantesRestApi.KEY_USERNAME = textInputLayoutUsername.getEditText().getText().toString();
+                Intent intent = new Intent(ActivityConfiguracion.this, MainActivity.class);
                 intent.putExtra(getResources().getString(R.string.username_instagram), textInputLayoutUsername.getEditText().getText().toString());
                 startActivity(intent);
             }

@@ -13,6 +13,7 @@ import asoftwaresolution.thebestpet.fragment.IMascotaPerfil;
 import asoftwaresolution.thebestpet.fragment.IMascotasListado;
 import asoftwaresolution.thebestpet.pojo.Mascota;
 import asoftwaresolution.thebestpet.pojo.Usuario;
+import asoftwaresolution.thebestpet.restApi.ConstantesRestApi;
 import asoftwaresolution.thebestpet.restApi.EndpointsApi;
 import asoftwaresolution.thebestpet.restApi.adapter.RestApiAdapter;
 import asoftwaresolution.thebestpet.restApi.model.MascotasResponse;
@@ -50,7 +51,7 @@ public class MascotaPerfilFragmentPresenter implements IMascotaPerfilPresenter {
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Gson gsonMediaRecent = restApiAdapter.construyeGsonDeserializadorUserData();
         EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiInstagram(gsonMediaRecent);
-        Call<UsuarioResponse> usuarioResponseCall = endpointsApi.getDataUsuario();
+        Call<UsuarioResponse> usuarioResponseCall = endpointsApi.getDataUsuario("_thebestpet", ConstantesRestApi.ACCESS_TOKEN);
         usuarioResponseCall.enqueue(new Callback<UsuarioResponse>() {
             @Override
             public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
@@ -72,7 +73,7 @@ public class MascotaPerfilFragmentPresenter implements IMascotaPerfilPresenter {
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Gson gsonMediaRecent = restApiAdapter.construyeGsonDeserializadorMediaRecent();
         EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiInstagram(gsonMediaRecent);
-        Call<MascotasResponse> mascotasResponseCall = endpointsApi.getRecentMedia();
+        Call<MascotasResponse> mascotasResponseCall = endpointsApi.getRecentMedia(ConstantesRestApi.KEY_ID_USER);
         mascotasResponseCall.enqueue(new Callback<MascotasResponse>() {
             @Override
             public void onResponse(Call<MascotasResponse> call, Response<MascotasResponse> response) {

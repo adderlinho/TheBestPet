@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "181416784086",
+    "firebase_url": "https://thebestpet-7bb69.firebaseio.com",
+    "project_id": "thebestpet-7bb69",
+    "storage_bucket": "thebestpet-7bb69.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:181416784086:android:e44e93836fd2d896",
+        "android_client_info": {
+          "package_name": "asoftwaresolution.thebestpet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "181416784086-akcbgiuo5ja557d7jptoq0ukcmjiq4d5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "asoftwaresolution.thebestpet",
+            "certificate_hash": "45b385ae1a7d8cb914ae33190f5927af0ed95e4a"
+          }
+        },
+        {
+          "client_id": "181416784086-1499qnhdst27ad62ds99horaua77qugq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3vJF7swTPv1CPvKygbU15yrWkncX_ff0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "181416784086-1499qnhdst27ad62ds99horaua77qugq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -38,4 +38,15 @@ public class RestApiAdapter {
         gsonBuilder.registerTypeAdapter(UsuarioResponse.class, new UsuarioDeserializador());
         return gsonBuilder.create();
     }
+
+    public EndpointsApi establecerConexionRestApiHeroku(){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(ConstantesRestApi.ROOT_URL_SERVER)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        return retrofit.create(EndpointsApi.class);
+    }
+
+
 }

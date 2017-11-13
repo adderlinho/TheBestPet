@@ -109,6 +109,13 @@ public class ConstructorMascotas {
         db.insertarLikeMascota(contentValues);
     }
 
+    public void insertarUsuarioDB(String usuario) {
+        BaseDatos db = new BaseDatos(context);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ConstantesBaseDatos.TABLE_USUARIO_USERNAME, usuario);
+        db.insertarLikeMascota(contentValues);
+    }
+
     public int obtenerLikesMascota(Mascota mascota) {
         BaseDatos db = new BaseDatos(context);
         return db.obtenerLikesMascota(mascota);

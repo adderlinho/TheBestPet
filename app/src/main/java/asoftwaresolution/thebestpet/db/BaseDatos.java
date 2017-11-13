@@ -41,14 +41,21 @@ public class BaseDatos extends SQLiteOpenHelper {
                                                 "FOREIGN KEY (" + ConstantesBaseDatos.TABLE_LIKES_MASCOTAS_ID_MASCOTA + ") " +
                                                 "REFERENCES " + ConstantesBaseDatos.TABLE_MASCOTA + "(" + ConstantesBaseDatos.TABLE_MASCOTA_ID +")" +
                                                 ")";
+
+        String queryCrearTablaUsuario = "CREATE TABLE " + ConstantesBaseDatos.TABLE_USUARIO + "("+
+                ConstantesBaseDatos.TABLE_USUARIO_ID        +       " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                ConstantesBaseDatos.TABLE_USUARIO_USERNAME    +     " TEXT " +
+                ")";
         sqLiteDatabase.execSQL(queryCrearTablaMascota);
         sqLiteDatabase.execSQL(queryCrearTablaLikesMascota);
+        sqLiteDatabase.execSQL(queryCrearTablaUsuario);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXIST " + ConstantesBaseDatos.TABLE_MASCOTA);
         sqLiteDatabase.execSQL("DROP TABLE IF EXIST " + ConstantesBaseDatos.TABLE_LIKES_MASCOTAS);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXIST " + ConstantesBaseDatos.TABLE_USUARIO);
         onCreate(sqLiteDatabase);
     }
 
@@ -97,6 +104,12 @@ public class BaseDatos extends SQLiteOpenHelper {
     public void insertarLikeMascota(ContentValues contentValues) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(ConstantesBaseDatos.TABLE_LIKES_MASCOTAS, null, contentValues);
+        db.close();
+    }
+
+    public void insertarUsuario(ContentValues contentValues) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.insert(ConstantesBaseDatos.TABLE_USUARIO, null, contentValues);
         db.close();
     }
 

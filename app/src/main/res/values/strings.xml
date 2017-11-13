@@ -11,6 +11,7 @@
     <string name="mcontactos">Contactos</string>
     <string name="macercade">Acerca de</string>
     <string name="mconfigurar">Configurar Cuenta</string>
+    <string name="mnotificaciones">Recibir Notificaciones</string>
 
     <string name="fm_user">Usuario</string>
     <string name="fm_mail">Correo</string>

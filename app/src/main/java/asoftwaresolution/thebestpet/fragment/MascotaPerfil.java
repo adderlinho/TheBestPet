@@ -1,6 +1,7 @@
 package asoftwaresolution.thebestpet.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -16,6 +17,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import asoftwaresolution.thebestpet.ActivityConfiguracion;
+import asoftwaresolution.thebestpet.MainActivity;
 import asoftwaresolution.thebestpet.R;
 import asoftwaresolution.thebestpet.adaptadores.MascotasAdaptador;
 import asoftwaresolution.thebestpet.adaptadores.PerfilAdaptador;
@@ -24,6 +27,8 @@ import asoftwaresolution.thebestpet.pojo.Usuario;
 import asoftwaresolution.thebestpet.presentador.IMascotaPerfilPresenter;
 import asoftwaresolution.thebestpet.presentador.IMascotasListadoFragmentPresenter;
 import asoftwaresolution.thebestpet.presentador.MascotaPerfilFragmentPresenter;
+import asoftwaresolution.thebestpet.restApi.ConstantesRestApi;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -34,7 +39,6 @@ public class MascotaPerfil extends Fragment implements IMascotaPerfil {
     private IMascotaPerfilPresenter presenter;
     private CircularImageView cimgv_perfil;
     private TextView tv_MascotaNamePerfil;
-    private String username = "";
 
     public MascotaPerfil() {
         // Required empty public constructor
@@ -49,15 +53,22 @@ public class MascotaPerfil extends Fragment implements IMascotaPerfil {
         cimgv_perfil            = (CircularImageView) view.findViewById(R.id.cimgv_perfil);
         tv_MascotaNamePerfil    = (TextView) view.findViewById(R.id.tv_MascotaNamePerfil);
 
-        Bundle bundle = getActivity().getIntent().getExtras();
-        if(bundle != null){
-            username = bundle.getString(getResources().getString(R.string.username_instagram));
+        if(ConstantesRestApi.KEY_USERNAME != "")
+        {
+            rvMascotaPerfil = (RecyclerView) view.findViewById(R.id.rvMascotaPerfil);
+            presenter = new MascotaPerfilFragmentPresenter(this, getContext());
+            presenter.obtenerDataUsuario();
+            //presenter.obtenerMediosRecientes();
+//            if(ConstantesRestApi.KEY_ID_USER != "")
+//            {
+//                presenter.obtenerMediosRecientes();
+//            }
         }
-
-        rvMascotaPerfil = (RecyclerView) view.findViewById(R.id.rvMascotaPerfil);
-        presenter = new MascotaPerfilFragmentPresenter(this, getContext());
-        presenter.obtenerMediosRecientes();
-        presenter.obtenerDataUsuario();
+        else
+        {
+            Intent intent = new Intent(getActivity(), ActivityConfiguracion.class);
+            startActivity(intent);
+        }
         return view;
     }
 
