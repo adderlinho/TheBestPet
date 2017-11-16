@@ -13,6 +13,8 @@ import java.util.Comparator;
 
 import asoftwaresolution.thebestpet.adaptadores.MascotasAdaptador;
 import asoftwaresolution.thebestpet.pojo.Mascota;
+import asoftwaresolution.thebestpet.pojo.Usuario;
+import asoftwaresolution.thebestpet.restApi.ConstantesRestApi;
 
 /**
  * Created by AdderlyS on 13/10/2017.
@@ -35,17 +37,20 @@ public class BaseDatos extends SQLiteOpenHelper {
                                         ")";
 
         String queryCrearTablaLikesMascota = "CREATE TABLE " + ConstantesBaseDatos.TABLE_LIKES_MASCOTAS + "("+
-                                                ConstantesBaseDatos.TABLE_LIKES_MASCOTAS_ID         +       " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                                ConstantesBaseDatos.TABLE_LIKES_MASCOTAS_ID_MASCOTA +       " INTEGER, " +
-                                                ConstantesBaseDatos.TABLE_LIKES_MASCOTAS_LIKES      +       " INTEGER, "  +
-                                                "FOREIGN KEY (" + ConstantesBaseDatos.TABLE_LIKES_MASCOTAS_ID_MASCOTA + ") " +
-                                                "REFERENCES " + ConstantesBaseDatos.TABLE_MASCOTA + "(" + ConstantesBaseDatos.TABLE_MASCOTA_ID +")" +
-                                                ")";
+                                        ConstantesBaseDatos.TABLE_LIKES_MASCOTAS_ID         +       " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                        ConstantesBaseDatos.TABLE_LIKES_MASCOTAS_ID_MASCOTA +       " INTEGER, " +
+                                        ConstantesBaseDatos.TABLE_LIKES_MASCOTAS_LIKES      +       " INTEGER, "  +
+                                        "FOREIGN KEY (" + ConstantesBaseDatos.TABLE_LIKES_MASCOTAS_ID_MASCOTA + ") " +
+                                        "REFERENCES " + ConstantesBaseDatos.TABLE_MASCOTA + "(" + ConstantesBaseDatos.TABLE_MASCOTA_ID +")" +
+                                        ")";
 
         String queryCrearTablaUsuario = "CREATE TABLE " + ConstantesBaseDatos.TABLE_USUARIO + "("+
-                ConstantesBaseDatos.TABLE_USUARIO_ID        +       " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                ConstantesBaseDatos.TABLE_USUARIO_USERNAME    +     " TEXT " +
-                ")";
+                                        ConstantesBaseDatos.TABLE_USUARIO_ID            +       " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                        ConstantesBaseDatos.TABLE_ID_USUARIO_INSTAGRAM  +       " TEXT, " +
+                                        ConstantesBaseDatos.TABLE_ID_USUARIO_FIREBASE   +       " TEXT, " +
+                                        ConstantesBaseDatos.TABLE_USUARIO_USERNAME      +       " TEXT " +
+                                        ")";
+
         sqLiteDatabase.execSQL(queryCrearTablaMascota);
         sqLiteDatabase.execSQL(queryCrearTablaLikesMascota);
         sqLiteDatabase.execSQL(queryCrearTablaUsuario);
@@ -113,6 +118,12 @@ public class BaseDatos extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void insertarIdFirebaseUsuario(ContentValues contentValues) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.update(ConstantesBaseDatos.TABLE_USUARIO, contentValues, ConstantesBaseDatos.TABLE_ID_USUARIO_INSTAGRAM + "=" + ConstantesRestApi.KEY_ID_USER_INSTAGRAM, null);
+        db.close();
+    }
+
     public int obtenerLikesMascota(Mascota mascota) {
         int likes = 0;
         String query = "Select Count(" + ConstantesBaseDatos.TABLE_LIKES_MASCOTAS_LIKES + ")" +
@@ -147,6 +158,26 @@ public class BaseDatos extends SQLiteOpenHelper {
         }
 
         return favoritas;
+    }
+
+    public ArrayList<Usuario> obtenerUsuarioRegistrado() {
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+
+        String query = "SELECT * FROM " + ConstantesBaseDatos.TABLE_USUARIO;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor registros = db.rawQuery(query, null);
+
+        while (registros.moveToNext()) {
+            Usuario usuarioActual = new Usuario();
+            usuarioActual.setId_instagram(registros.getString(1));
+            usuarioActual.setId_firebase(registros.getString(2));
+            usuarioActual.setUsername(registros.getString(3));
+            usuarios.add(usuarioActual);
+        }
+
+        db.close();
+
+        return usuarios;
     }
 
     public void limpiarDB() {

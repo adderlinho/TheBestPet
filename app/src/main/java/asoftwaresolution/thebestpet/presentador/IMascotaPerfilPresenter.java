@@ -8,6 +8,8 @@ public interface IMascotaPerfilPresenter
 {
     public void obtenerMascotasBaseDatos();
 
+    void insertarUsuario(String id_instagram, String id_firebase, String username);
+
     public void obtenerDataUsuario();
 
     public void obtenerMediosRecientes();

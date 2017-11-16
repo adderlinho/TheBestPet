@@ -8,35 +8,40 @@
 
     <include android:id="@+id/miActionBar"
         layout="@layout/actionbar"
-        android:paddingRight="@dimen/activity_horizontal_padding"
-        android:paddingBottom="@dimen/activity_vertical_padding"
-        android:paddingLeft="@dimen/activity_horizontal_padding">
+        android:padding="@dimen/activity_horizontal_padding">
     </include>
 
     <TextView
         android:id="@+id/tvTitleConfig"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="50dp"
+        android:textSize="@dimen/tv_sizeConfig"
         android:text="@string/app_name"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/miActionBar"
         android:paddingTop="50dp"/>
 
+    <TextView
+        android:id="@+id/tvTitleConfig2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/tv_sizeConfig2"
+        android:text="@string/descripcionConfiguracion"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tvTitleConfig"
+        android:padding="@dimen/activity_horizontal_padding"/>
+
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textInputLayoutUsername"
-        android:layout_below="@+id/tvTitleConfig"
-        android:paddingBottom="@dimen/activity_vertical_padding"
-        android:paddingTop="90dp"
-        android:paddingRight="@dimen/activity_horizontal_padding"
-        android:paddingLeft="@dimen/activity_horizontal_padding">
+        android:layout_below="@+id/tvTitleConfig2"
+        android:padding="@dimen/activity_horizontal_padding">
 
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
+            android:hint="@string/editTextConfig"
             android:id="@+id/form_usernameConfig"
             android:inputType="text"/>
 
@@ -47,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="Guardar Cuenta"
+        android:text="@string/btnConfig"
         android:theme="@style/BotonStyle"
         android:textStyle="bold"/>
 

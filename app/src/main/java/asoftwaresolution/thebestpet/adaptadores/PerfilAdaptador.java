@@ -43,7 +43,7 @@ public class PerfilAdaptador extends RecyclerView.Adapter<PerfilAdaptador.Mascot
         //holder.imgvMascotaCV.setImageResource(mascota.getImagen());
                 Picasso.with(activity)
                 .load(mascota.getUrlFoto())
-                .placeholder(R.drawable.balto)
+                .placeholder(R.drawable.ic_dog_face)
                 .into(holder.imgvMascotaCV);
         holder.tvMascotaLikesCV.setText(Integer.toString(mascota.getInstagram_likes()));
         holder.imgbLikesCV.setImageResource(R.drawable.bone_likes);

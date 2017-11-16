@@ -58,11 +58,7 @@ public class MascotaPerfil extends Fragment implements IMascotaPerfil {
             rvMascotaPerfil = (RecyclerView) view.findViewById(R.id.rvMascotaPerfil);
             presenter = new MascotaPerfilFragmentPresenter(this, getContext());
             presenter.obtenerDataUsuario();
-            //presenter.obtenerMediosRecientes();
-//            if(ConstantesRestApi.KEY_ID_USER != "")
-//            {
-//                presenter.obtenerMediosRecientes();
-//            }
+            presenter.obtenerMediosRecientes();
         }
         else
         {

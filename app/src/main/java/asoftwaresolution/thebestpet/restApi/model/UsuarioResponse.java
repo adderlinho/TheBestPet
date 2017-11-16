@@ -12,6 +12,10 @@ import asoftwaresolution.thebestpet.pojo.Usuario;
 public class UsuarioResponse {
     ArrayList<Usuario> usuarios;
 
+    public ArrayList<Usuario> getId() {
+        return usuarios;
+    }
+
     public ArrayList<Usuario> getUsuario() {
         return usuarios;
     }

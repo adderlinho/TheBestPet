@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tv_sizeConfig2">20sp</dimen>
+    <dimen name="tv_sizeConfig">50sp</dimen>
+    <dimen name="tv_textSizeInformaciondeTitle1">30sp</dimen>
+</resources>

@@ -7,12 +7,14 @@ import java.io.Serializable;
  */
 
 public class Usuario implements Serializable {
-    private String id;
+    private String id_instagram;
+    private String id_firebase;
     private String username;
     private String profile_picture;
 
-    public Usuario(String id, String username, String profile_picture) {
-        this.id = id;
+    public Usuario(String id_instagram, String id_firebase, String username, String profile_picture) {
+        this.id_instagram = id_instagram;
+        this.id_firebase = id_firebase;
         this.username = username;
         this.profile_picture = profile_picture;
     }
@@ -21,12 +23,20 @@ public class Usuario implements Serializable {
 
     }
 
-    public String getId() {
-        return id;
+    public String getId_instagram() {
+        return id_instagram;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setId_instagram(String id_instagram) {
+        this.id_instagram = id_instagram;
+    }
+
+    public String getId_firebase() {
+        return id_firebase;
+    }
+
+    public void setId_firebase(String id_firebase) {
+        this.id_firebase = id_firebase;
     }
 
     public String getUsername() {

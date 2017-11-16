@@ -16,4 +16,8 @@
         android:title="@string/mnotificaciones"
         android:orderInCategory="4">
     </item>
+    <item android:id="@+id/mInformacion"
+        android:title="@string/minformacion"
+        android:orderInCategory="5">
+    </item>
 </menu>

@@ -24,6 +24,7 @@ public class MascotasListado extends Fragment implements IMascotasListado {
     private ArrayList<Mascota> mascotas;
     private RecyclerView rvMascotas;
     private IMascotasListadoFragmentPresenter presenter;
+    private ArrayList<String> usuarios;
 
     public MascotasListado() {
         // Required empty public constructor
@@ -35,9 +36,17 @@ public class MascotasListado extends Fragment implements IMascotasListado {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_mascotas_listado, container, false);
 
+        usuarios = new ArrayList<String>();
+        usuarios.add("_thebestpet");
+        usuarios.add("perritokaisser");
+
         rvMascotas = (RecyclerView) view.findViewById(R.id.rvMascotas);
         presenter = new MascotasListadoFragmentPresenter(this, getContext());
-        presenter.obtenerMascotasBaseDatos();
+        //presenter.obtenerMascotasBaseDatos();
+        for (int i = 0; i < usuarios.size(); i++)
+        {
+            presenter.obtenerDataUsuario(usuarios.get(i).toString());
+        }
         return view;
     }
 

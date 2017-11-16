@@ -42,7 +42,7 @@ public class UsuarioDeserializador implements JsonDeserializer<UsuarioResponse> 
             String profile_picture         = usuarioResponseDataObject.get(JsonKeys.PROFILE_PICTURE).getAsString();
 
             Usuario usuarioActual = new Usuario();
-            usuarioActual.setId(id);
+            usuarioActual.setId_instagram(id);
             usuarioActual.setUsername(username);
             usuarioActual.setProfile_picture(profile_picture);
 

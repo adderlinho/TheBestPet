@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import asoftwaresolution.thebestpet.R;
 import asoftwaresolution.thebestpet.pojo.Mascota;
+import asoftwaresolution.thebestpet.pojo.Usuario;
+import asoftwaresolution.thebestpet.restApi.ConstantesRestApi;
 
 /**
  * Created by AdderlyS on 13/10/2017.
@@ -109,11 +111,21 @@ public class ConstructorMascotas {
         db.insertarLikeMascota(contentValues);
     }
 
-    public void insertarUsuarioDB(String usuario) {
+    public void insertarUsuarioDB(String id_instagram, String id_firebase, String usuario) {
         BaseDatos db = new BaseDatos(context);
         ContentValues contentValues = new ContentValues();
+        contentValues.put(ConstantesBaseDatos.TABLE_ID_USUARIO_INSTAGRAM, id_instagram);
+        contentValues.put(ConstantesBaseDatos.TABLE_ID_USUARIO_FIREBASE, id_firebase);
         contentValues.put(ConstantesBaseDatos.TABLE_USUARIO_USERNAME, usuario);
-        db.insertarLikeMascota(contentValues);
+        db.insertarUsuario(contentValues);
+    }
+
+    public void insertarIdFirebaseUsuarioDB(String id_firebase)
+    {
+        BaseDatos db = new BaseDatos(context);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ConstantesBaseDatos.TABLE_ID_USUARIO_FIREBASE, id_firebase);
+        db.insertarIdFirebaseUsuario(contentValues);
     }
 
     public int obtenerLikesMascota(Mascota mascota) {
@@ -125,5 +137,10 @@ public class ConstructorMascotas {
         BaseDatos db = new BaseDatos(context);
         insertarMascotas(db);
         return db.obtenerMascotasPopulares();
+    }
+
+    public ArrayList<Usuario> obtenerUsuarioRegistrado() {
+        BaseDatos db = new BaseDatos(context);
+        return db.obtenerUsuarioRegistrado();
     }
 }

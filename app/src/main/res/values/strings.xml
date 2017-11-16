@@ -29,4 +29,13 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="descripcionConfiguracion">Ingresa tu usuario de instagram para poder obtener los datos necesarios para la aplicación.</string>
+    <string name="btnConfig">Guardar Cuenta</string>
+    <string name="editTextConfig">Username</string>
+    <string name="txt_informacion_titulo">Información de la cuenta</string>
+    <string name="txt_informacion_username">Username</string>
+    <string name="txt_informacion_miIdInstagram">Id_Instragram</string>
+    <string name="txt_informacion_miToken">Token</string>
+    <string name="txt_informacion_miIdFirebase">id_firebase</string>
+    <string name="minformacion">Información Cuenta</string>
 </resources>

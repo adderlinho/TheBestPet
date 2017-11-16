@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 
 import asoftwaresolution.thebestpet.db.ConstructorMascotas;
@@ -33,6 +34,7 @@ public class MascotaPerfilFragmentPresenter implements IMascotaPerfilPresenter {
     private ConstructorMascotas constructorMascotas;
     private ArrayList<Mascota> mascotas;
     private ArrayList<Usuario> usuarios;
+    private ArrayList<Usuario> usuario = new ArrayList<>();
 
     public MascotaPerfilFragmentPresenter(IMascotaPerfil iMascotaPerfil, Context context) {
         this.iMascotaPerfil = iMascotaPerfil;
@@ -47,17 +49,33 @@ public class MascotaPerfilFragmentPresenter implements IMascotaPerfilPresenter {
     }
 
     @Override
+    public void insertarUsuario(String id_instagram, String id_firebase, String username) {
+        constructorMascotas = new ConstructorMascotas(context);
+        usuario = constructorMascotas.obtenerUsuarioRegistrado();
+        if(usuario.size() == 1)
+        {
+            Log.i("USUARIO YA REGISTRADO: ", String.valueOf(usuario.get(0).getUsername()));
+        }
+        else
+        {
+            constructorMascotas.insertarUsuarioDB(id_instagram, id_firebase, username);
+        }
+    }
+
+
+    @Override
     public void obtenerDataUsuario() {
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Gson gsonMediaRecent = restApiAdapter.construyeGsonDeserializadorUserData();
         EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiInstagram(gsonMediaRecent);
-        Call<UsuarioResponse> usuarioResponseCall = endpointsApi.getDataUsuario("_thebestpet", ConstantesRestApi.ACCESS_TOKEN);
+        Call<UsuarioResponse> usuarioResponseCall = endpointsApi.getDataUsuario(ConstantesRestApi.KEY_USERNAME, ConstantesRestApi.ACCESS_TOKEN);
         usuarioResponseCall.enqueue(new Callback<UsuarioResponse>() {
             @Override
             public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
                 UsuarioResponse usuarioResponse =  response.body();
                 usuarios = usuarioResponse.getUsuario();
                 mostrarDataUsuario();
+                insertarUsuario(usuarios.get(0).getId_instagram(), "", ConstantesRestApi.KEY_USERNAME);
             }
 
             @Override
@@ -73,7 +91,7 @@ public class MascotaPerfilFragmentPresenter implements IMascotaPerfilPresenter {
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Gson gsonMediaRecent = restApiAdapter.construyeGsonDeserializadorMediaRecent();
         EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiInstagram(gsonMediaRecent);
-        Call<MascotasResponse> mascotasResponseCall = endpointsApi.getRecentMedia(ConstantesRestApi.KEY_ID_USER);
+        Call<MascotasResponse> mascotasResponseCall = endpointsApi.getRecentMediaPerfil();
         mascotasResponseCall.enqueue(new Callback<MascotasResponse>() {
             @Override
             public void onResponse(Call<MascotasResponse> call, Response<MascotasResponse> response) {

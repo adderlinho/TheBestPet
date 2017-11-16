@@ -19,8 +19,10 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import java.util.ArrayList;
 
 import asoftwaresolution.thebestpet.adaptadores.PageAdapter;
+import asoftwaresolution.thebestpet.db.ConstructorMascotas;
 import asoftwaresolution.thebestpet.fragment.MascotaPerfil;
 import asoftwaresolution.thebestpet.fragment.MascotasListado;
+import asoftwaresolution.thebestpet.pojo.Usuario;
 import asoftwaresolution.thebestpet.restApi.ConstantesRestApi;
 import asoftwaresolution.thebestpet.restApi.EndpointsApi;
 import asoftwaresolution.thebestpet.restApi.adapter.RestApiAdapter;
@@ -35,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ImageButton starActionBar;
+    private ArrayList<Usuario> usuario = new ArrayList<>();
+    private ConstructorMascotas constructorMascotas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,19 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        constructorMascotas = new ConstructorMascotas(this);
+        usuario = constructorMascotas.obtenerUsuarioRegistrado();
+        if(usuario.size() == 0)
+        {
+            Log.i("USUARIO NO REGISTRADO: ", String.valueOf(usuario.size()));
+        }
+        else
+        {
+            ConstantesRestApi.KEY_ID_USER_INSTAGRAM = usuario.get(0).getId_instagram();
+            ConstantesRestApi.KEY_ID_USER_FIREBASE = usuario.get(0).getId_firebase();
+            ConstantesRestApi.KEY_USERNAME = usuario.get(0).getUsername();
+        }
     }
 
     @Override
@@ -87,6 +104,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.mNotificaciones:
                 enviarRegistroFireBase();
                 break;
+            case R.id.mInformacion:
+                Intent intentInfo = new Intent(MainActivity.this, Informacion.class);
+                startActivity(intentInfo);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -110,24 +131,40 @@ public class MainActivity extends AppCompatActivity {
 
     private void enviarRegistroFireBase()
     {
-        String token = FirebaseInstanceId.getInstance().getToken();
-        RestApiAdapter restApiAdapter = new RestApiAdapter();
-        EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiHeroku();
-        Call<FirebaseResponse> firebaseResponseCall = endpointsApi.registrarTokenID(token, ConstantesRestApi.KEY_USERNAME);
-        firebaseResponseCall.enqueue(new Callback<FirebaseResponse>() {
-            @Override
-            public void onResponse(Call<FirebaseResponse> call, Response<FirebaseResponse> response) {
-                FirebaseResponse firebaseResponse = response.body();
-                Log.d("ID_FIREBASE", firebaseResponse.getId());
-                Log.d("ID_DISPOSITIVO", firebaseResponse.getId_dispositivo());
-                Log.d("USUARIO_INSTAGRAM", firebaseResponse.getId_usuario_instagram());
-            }
+        if(ConstantesRestApi.KEY_ID_USER_INSTAGRAM != "" && ConstantesRestApi.KEY_USERNAME != "")
+        {
+            if(ConstantesRestApi.KEY_ID_USER_FIREBASE == "")
+            {
+                String token = FirebaseInstanceId.getInstance().getToken();
+                RestApiAdapter restApiAdapter = new RestApiAdapter();
+                EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiHeroku();
+                Call<FirebaseResponse> firebaseResponseCall = endpointsApi.registrarTokenID(token, ConstantesRestApi.KEY_ID_USER_INSTAGRAM);
+                firebaseResponseCall.enqueue(new Callback<FirebaseResponse>() {
+                    @Override
+                    public void onResponse(Call<FirebaseResponse> call, Response<FirebaseResponse> response) {
+                        FirebaseResponse firebaseResponse = response.body();
+                        constructorMascotas.insertarIdFirebaseUsuarioDB(firebaseResponse.getId());
+                        Log.d("ID_USUARIO_FIREBASE", firebaseResponse.getId());
+                        Log.d("ID_DISPOSITIVO", firebaseResponse.getId_dispositivo());
+                        Log.d("ID_USUARIO_INSTAGRAM", firebaseResponse.getId_usuario_instagram());
+                    }
 
-            @Override
-            public void onFailure(Call<FirebaseResponse> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "!Algo pasó en la conexión! Intenta de nuevo.", Toast.LENGTH_LONG).show();
-                Log.i("FALLO LA CONEXIÓN", t.toString());
+                    @Override
+                    public void onFailure(Call<FirebaseResponse> call, Throwable t) {
+                        Toast.makeText(getApplicationContext(), "!Algo pasó en la conexión! Intenta de nuevo.", Toast.LENGTH_LONG).show();
+                        Log.i("FALLO LA CONEXIÓN", t.toString());
+                    }
+                });
             }
-        });
+            else
+            {
+                Toast.makeText(this, "Su dispositivo ya está listo para recibir notificaciones.", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            Intent intent = new Intent(this, ActivityConfiguracion.class);
+            startActivity(intent);
+        }
     }
 }

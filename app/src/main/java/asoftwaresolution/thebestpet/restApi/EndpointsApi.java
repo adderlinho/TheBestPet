@@ -21,17 +21,24 @@ import retrofit2.http.Query;
 
 public interface EndpointsApi {
 
-    //https://api.instagram.com/v1/users/self/media/recent/?access_token=ACCESS-TOKEN
-    @GET(ConstantesRestApi.URL_GET_RECENT_MEDIA_USER)
-    Call<MascotasResponse> getRecentMedia(@Field("user-id") String id);
-
     //https://api.instagram.com/v1/users/search?q=jack&access_token=ACCESS-TOKEN
     @GET(ConstantesRestApi.URL_GET_USER_DATA)
-    Call<UsuarioResponse> getDataUsuario(@Query("") String username,
-                                         @Query("access_token")    String token);
+    Call<UsuarioResponse> getDataUsuario(@Query("q") String username,
+                                         @Query("access_token") String token);
+
+    //https://api.instagram.com/v1/users/self/media/recent/?access_token=ACCESS-TOKEN
+    @GET(ConstantesRestApi.URL_GET_RECENT_MEDIA_PERFIL)
+    Call<MascotasResponse> getRecentMediaPerfil();
+
+    //https://api.instagram.com/v1/users/{user-id}/media/recent/?access_token=ACCESS-TOKEN
+    @GET(ConstantesRestApi.URL_GET_RECENT_MEDIA_USERS)
+    Call<MascotasResponse> getRecentMedia(@Path("user-id") String id);
 
     //https://powerful-anchorage-22855.herokuapp.com/registrar-usuario
     @FormUrlEncoded
     @POST(ConstantesRestApi.KEY_POST_ID_TOKEN)
-    Call<FirebaseResponse> registrarTokenID(@Field("token") String token, @Field("usuario_instagram") String user_instragram);
+    Call<FirebaseResponse> registrarTokenID(@Field("id_dispositivo") String token, @Field("id_usuario_instagram") String id_user_instragram);
+
+    @GET(ConstantesRestApi.KEY_POST_LIKE)
+    Call<UsuarioResponse> registrarLike(@Path("token") String token, @Path("id_firebase") String id_firebase);
 }

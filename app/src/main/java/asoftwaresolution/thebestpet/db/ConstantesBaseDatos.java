@@ -20,5 +20,7 @@ public class ConstantesBaseDatos {
 
     public static final String TABLE_USUARIO = "usuario";
     public static final String TABLE_USUARIO_ID = "id";
+    public static final String TABLE_ID_USUARIO_INSTAGRAM = "id_instagram";
+    public static final String TABLE_ID_USUARIO_FIREBASE = "id_firebase";
     public static final String TABLE_USUARIO_USERNAME = "username";
 }
