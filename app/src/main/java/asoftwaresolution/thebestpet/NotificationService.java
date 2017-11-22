@@ -12,6 +12,8 @@ import android.util.Log;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import asoftwaresolution.thebestpet.fragment.MascotaPerfil;
+
 /**
  * Created by AdderlyS on 3/11/2017.
  */
@@ -25,9 +27,11 @@ public class NotificationService extends FirebaseMessagingService {
         Log.d(TAG, "From: " + remoteMessage.getFrom());
         Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
 
-        Intent intent = new Intent(this, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+        Intent perfil = new Intent(this, MainActivity.class);
+        perfil.putExtra("Perfil", "1");
 
+        //Intent intent = new Intent(this, MascotaPerfil.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, perfil, PendingIntent.FLAG_UPDATE_CURRENT);
         Uri sonido = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         NotificationCompat.Builder notificationCompat = new NotificationCompat.Builder(this)
@@ -36,7 +40,8 @@ public class NotificationService extends FirebaseMessagingService {
                 .setContentText(remoteMessage.getNotification().getBody())
                 .setSound(sonido)
                 .setContentIntent(pendingIntent)
-                .setAutoCancel(true);
+                .setAutoCancel(true)
+                .addAction(0, "Perfil", pendingIntent);
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(0, notificationCompat.build());

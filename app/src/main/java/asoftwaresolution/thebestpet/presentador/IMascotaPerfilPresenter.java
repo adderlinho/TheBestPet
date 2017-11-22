@@ -12,7 +12,7 @@ public interface IMascotaPerfilPresenter
 
     public void obtenerDataUsuario();
 
-    public void obtenerMediosRecientes();
+    public void obtenerMediosRecientesPerfil(String id_usuario);
 
     public void mostrarDataUsuario();
 

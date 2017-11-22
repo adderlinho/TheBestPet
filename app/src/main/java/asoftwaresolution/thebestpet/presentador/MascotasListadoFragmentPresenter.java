@@ -8,11 +8,9 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
-import asoftwaresolution.thebestpet.adaptadores.MascotasAdaptador;
 import asoftwaresolution.thebestpet.db.ConstructorMascotas;
 import asoftwaresolution.thebestpet.fragment.IMascotasListado;
 import asoftwaresolution.thebestpet.pojo.Mascota;
-import asoftwaresolution.thebestpet.pojo.Usuario;
 import asoftwaresolution.thebestpet.restApi.ConstantesRestApi;
 import asoftwaresolution.thebestpet.restApi.EndpointsApi;
 import asoftwaresolution.thebestpet.restApi.adapter.RestApiAdapter;
@@ -104,6 +102,7 @@ public class MascotasListadoFragmentPresenter implements IMascotasListadoFragmen
                     mascotaActual.setUrlFoto(mascotas.get(i).getUrlFoto());
                     mascotaActual.setNombreCompleto(mascotas.get(i).getNombreCompleto());
                     mascotaActual.setInstagram_likes(mascotas.get(i).getInstagram_likes());
+                    mascotaActual.setId_media(mascotas.get(i).getId_media());
                     mascotas_encontradas.add(mascotaActual);
                 }
                 mostrarMascotasRV();

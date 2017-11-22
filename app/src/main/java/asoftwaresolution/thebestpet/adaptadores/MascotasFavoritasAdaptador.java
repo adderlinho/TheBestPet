@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import asoftwaresolution.thebestpet.R;
@@ -40,10 +42,14 @@ public class MascotasFavoritasAdaptador extends RecyclerView.Adapter<MascotasFav
     @Override
     public void onBindViewHolder(final MascotaViewHolder holder, int position) {
         final Mascota mascota = mascotas.get(position);
-        holder.imgvMascotaCV.setImageResource(mascota.getImagen());
+        //holder.imgvMascotaCV.setImageResource(mascota.getImagen());
+        Picasso.with(activity)
+                .load(mascota.getUrlFoto())
+                .placeholder(R.drawable.ic_dog_face)
+                .into(holder.imgvMascotaCV);
         holder.imgbLikeCV.setImageResource(R.drawable.bone_like);
-        holder.tvMascotaNameCV.setText(mascota.getNombre());
-        holder.tvMascotaLikesCV.setText(Integer.toString(mascota.getLikes()));
+        //holder.tvMascotaNameCV.setText(mascota.getNombreCompleto());
+        holder.tvMascotaLikesCV.setText(Integer.toString(mascota.getInstagram_likes()));
         holder.imgbLikesCV.setImageResource(R.drawable.bone_likes);
 
         holder.imgbLikeCV.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +59,6 @@ public class MascotasFavoritasAdaptador extends RecyclerView.Adapter<MascotasFav
                 ConstructorMascotas constructorMascotas = new ConstructorMascotas(activity);
                 constructorMascotas.darLikeMascota(mascota);
                 //mascota.setLikes(mascota.getLikes() + 1);
-                ;
                 holder.tvMascotaLikesCV.setText(Integer.toString(constructorMascotas.obtenerLikesMascota(mascota)));
             }
         });

@@ -14,18 +14,22 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import asoftwaresolution.thebestpet.Session.SessionManager;
 import asoftwaresolution.thebestpet.adaptadores.MascotasAdaptador;
+import asoftwaresolution.thebestpet.adaptadores.MascotasFavoritasAdaptador;
 import asoftwaresolution.thebestpet.pojo.Mascota;
 import asoftwaresolution.thebestpet.presentador.IMascotasFavoritasPresenter;
 import asoftwaresolution.thebestpet.presentador.IMascotasListadoFragmentPresenter;
 import asoftwaresolution.thebestpet.presentador.MascotasFavoritasPresenter;
 import asoftwaresolution.thebestpet.presentador.MascotasListadoFragmentPresenter;
+import asoftwaresolution.thebestpet.restApi.ConstantesRestApi;
 
 public class MascotasFavoritas extends AppCompatActivity implements IMascotasFavoritas {
 
     private ArrayList<Mascota> mascotas;
     private RecyclerView rvMascotasFavoritas;
     private IMascotasFavoritasPresenter presenter;
+    private SessionManager manager;
 
     public MascotasFavoritas() {
         // Required empty public constructor
@@ -43,7 +47,7 @@ public class MascotasFavoritas extends AppCompatActivity implements IMascotasFav
 
         rvMascotasFavoritas = (RecyclerView) findViewById(R.id.rvMascotasFavoritas);
         presenter = new MascotasFavoritasPresenter(this, getBaseContext());
-        presenter.obtenerMascotasBaseDatos();
+        presenter.obtenerMediosRecientesPerfil(manager.getPreferences(getApplicationContext(),"KEY_ID_USER_INSTAGRAM"));
 
         miActionBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,13 +67,13 @@ public class MascotasFavoritas extends AppCompatActivity implements IMascotasFav
     }
 
     @Override
-    public MascotasAdaptador crearAdaptador(ArrayList<Mascota> mascotas) {
-        MascotasAdaptador adapter = new MascotasAdaptador(mascotas, MascotasFavoritas.this);
+    public MascotasFavoritasAdaptador crearAdaptador(ArrayList<Mascota> mascotas) {
+        MascotasFavoritasAdaptador adapter = new MascotasFavoritasAdaptador(mascotas, MascotasFavoritas.this);
         return adapter;
     }
 
     @Override
-    public void inicializarAdaptadorML(MascotasAdaptador adaptador) {
+    public void inicializarAdaptadorML(MascotasFavoritasAdaptador adaptador) {
         rvMascotasFavoritas.setAdapter(adaptador);
     }
 }

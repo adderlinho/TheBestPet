@@ -3,6 +3,7 @@ package asoftwaresolution.thebestpet;
 import java.util.ArrayList;
 
 import asoftwaresolution.thebestpet.adaptadores.MascotasAdaptador;
+import asoftwaresolution.thebestpet.adaptadores.MascotasFavoritasAdaptador;
 import asoftwaresolution.thebestpet.pojo.Mascota;
 
 /**
@@ -13,7 +14,7 @@ public interface IMascotasFavoritas
 {
     public void generarLinearLayoutVertical();
 
-    public MascotasAdaptador crearAdaptador(ArrayList<Mascota> mascotas);
+    public MascotasFavoritasAdaptador crearAdaptador(ArrayList<Mascota> mascotas);
 
-    public void inicializarAdaptadorML(MascotasAdaptador adaptador);
+    public void inicializarAdaptadorML(MascotasFavoritasAdaptador adaptador);
 }

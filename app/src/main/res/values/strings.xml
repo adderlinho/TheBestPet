@@ -38,4 +38,5 @@
     <string name="txt_informacion_miToken">Token</string>
     <string name="txt_informacion_miIdFirebase">id_firebase</string>
     <string name="minformacion">Información Cuenta</string>
+    <string name="texto_accion_toque_ver_perfil">Ver Perfil</string>
 </resources>

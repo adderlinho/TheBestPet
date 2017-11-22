@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 
+import asoftwaresolution.thebestpet.Session.SessionManager;
 import asoftwaresolution.thebestpet.db.ConstructorMascotas;
 import asoftwaresolution.thebestpet.fragment.IMascotaPerfil;
 import asoftwaresolution.thebestpet.fragment.IMascotasListado;
@@ -35,10 +36,12 @@ public class MascotaPerfilFragmentPresenter implements IMascotaPerfilPresenter {
     private ArrayList<Mascota> mascotas;
     private ArrayList<Usuario> usuarios;
     private ArrayList<Usuario> usuario = new ArrayList<>();
+    private SessionManager manager;
 
     public MascotaPerfilFragmentPresenter(IMascotaPerfil iMascotaPerfil, Context context) {
         this.iMascotaPerfil = iMascotaPerfil;
         this.context = context;
+        this.manager = new SessionManager();
     }
 
     @Override
@@ -68,14 +71,16 @@ public class MascotaPerfilFragmentPresenter implements IMascotaPerfilPresenter {
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Gson gsonMediaRecent = restApiAdapter.construyeGsonDeserializadorUserData();
         EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiInstagram(gsonMediaRecent);
-        Call<UsuarioResponse> usuarioResponseCall = endpointsApi.getDataUsuario(ConstantesRestApi.KEY_USERNAME, ConstantesRestApi.ACCESS_TOKEN);
+        Call<UsuarioResponse> usuarioResponseCall = endpointsApi.getDataUsuario(manager.getPreferences(context,"KEY_USERNAME"), ConstantesRestApi.ACCESS_TOKEN);
         usuarioResponseCall.enqueue(new Callback<UsuarioResponse>() {
             @Override
             public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
                 UsuarioResponse usuarioResponse =  response.body();
                 usuarios = usuarioResponse.getUsuario();
+                manager.setPreferences(context, "KEY_ID_USER_INSTAGRAM", usuarios.get(0).getId_instagram());
                 mostrarDataUsuario();
-                insertarUsuario(usuarios.get(0).getId_instagram(), "", ConstantesRestApi.KEY_USERNAME);
+                insertarUsuario(manager.getPreferences(context,"KEY_ID_USER_INSTAGRAM"), manager.getPreferences(context,"KEY_ID_USER_FIREBASE"), manager.getPreferences(context,"KEY_USERNAME"));
+                obtenerMediosRecientesPerfil(manager.getPreferences(context,"KEY_ID_USER_INSTAGRAM"));
             }
 
             @Override
@@ -86,12 +91,12 @@ public class MascotaPerfilFragmentPresenter implements IMascotaPerfilPresenter {
         });
     }
 
-        @Override
-    public void obtenerMediosRecientes() {
+    @Override
+    public void obtenerMediosRecientesPerfil(String id_usuario) {
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Gson gsonMediaRecent = restApiAdapter.construyeGsonDeserializadorMediaRecent();
         EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiInstagram(gsonMediaRecent);
-        Call<MascotasResponse> mascotasResponseCall = endpointsApi.getRecentMediaPerfil();
+        Call<MascotasResponse> mascotasResponseCall = endpointsApi.getRecentMediaPerfil(id_usuario);
         mascotasResponseCall.enqueue(new Callback<MascotasResponse>() {
             @Override
             public void onResponse(Call<MascotasResponse> call, Response<MascotasResponse> response) {

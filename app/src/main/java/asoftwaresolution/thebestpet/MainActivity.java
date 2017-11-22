@@ -16,8 +16,10 @@ import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 
+import java.io.File;
 import java.util.ArrayList;
 
+import asoftwaresolution.thebestpet.Session.SessionManager;
 import asoftwaresolution.thebestpet.adaptadores.PageAdapter;
 import asoftwaresolution.thebestpet.db.ConstructorMascotas;
 import asoftwaresolution.thebestpet.fragment.MascotaPerfil;
@@ -37,13 +39,15 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ImageButton starActionBar;
-    private ArrayList<Usuario> usuario = new ArrayList<>();
+//    private ArrayList<Usuario> usuario = new ArrayList<>();
     private ConstructorMascotas constructorMascotas;
+    private SessionManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        manager = new SessionManager();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
@@ -66,17 +70,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
         constructorMascotas = new ConstructorMascotas(this);
-        usuario = constructorMascotas.obtenerUsuarioRegistrado();
-        if(usuario.size() == 0)
-        {
-            Log.i("USUARIO NO REGISTRADO: ", String.valueOf(usuario.size()));
-        }
-        else
-        {
-            ConstantesRestApi.KEY_ID_USER_INSTAGRAM = usuario.get(0).getId_instagram();
-            ConstantesRestApi.KEY_ID_USER_FIREBASE = usuario.get(0).getId_firebase();
-            ConstantesRestApi.KEY_USERNAME = usuario.get(0).getUsername();
-        }
+//        usuario = constructorMascotas.obtenerUsuarioRegistrado();
+//        if(usuario.size() == 0)
+//        {
+//            Log.i("USUARIO NO REGISTRADO: ", String.valueOf(usuario.size()));
+//        }
+//        else
+//        {
+//            manager.setPreferences(this, "KEY_ID_USER_INSTAGRAM", usuario.get(0).getId_instagram());
+//            manager.setPreferences(this, "KEY_ID_USER_FIREBASE", usuario.get(0).getId_firebase());
+//            manager.setPreferences(this, "KEY_USERNAME", usuario.get(0).getUsername());
+//        }
     }
 
     @Override
@@ -127,26 +131,32 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_house_dog);
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_dog_face);
+
+        if (getIntent().getExtras() != null && getIntent() != null) {
+            viewPager.setCurrentItem(1);
+        }
     }
 
     private void enviarRegistroFireBase()
     {
-        if(ConstantesRestApi.KEY_ID_USER_INSTAGRAM != "" && ConstantesRestApi.KEY_USERNAME != "")
+        if(manager.getPreferences(getApplicationContext(),"KEY_ID_USER_INSTAGRAM") != "" && manager.getPreferences(getApplicationContext(),"KEY_USERNAME") != "")
         {
-            if(ConstantesRestApi.KEY_ID_USER_FIREBASE == "")
+            if(manager.getPreferences(getApplicationContext(),"KEY_ID_USER_FIREBASE") == "")
             {
                 String token = FirebaseInstanceId.getInstance().getToken();
                 RestApiAdapter restApiAdapter = new RestApiAdapter();
                 EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiHeroku();
-                Call<FirebaseResponse> firebaseResponseCall = endpointsApi.registrarTokenID(token, ConstantesRestApi.KEY_ID_USER_INSTAGRAM);
+                Call<FirebaseResponse> firebaseResponseCall = endpointsApi.registrarTokenID(token, manager.getPreferences(getApplicationContext(),"KEY_ID_USER_INSTAGRAM"));
                 firebaseResponseCall.enqueue(new Callback<FirebaseResponse>() {
                     @Override
                     public void onResponse(Call<FirebaseResponse> call, Response<FirebaseResponse> response) {
                         FirebaseResponse firebaseResponse = response.body();
                         constructorMascotas.insertarIdFirebaseUsuarioDB(firebaseResponse.getId());
+                        manager.setPreferences(getApplicationContext(), "KEY_ID_USER_FIREBASE", firebaseResponse.getId());
                         Log.d("ID_USUARIO_FIREBASE", firebaseResponse.getId());
                         Log.d("ID_DISPOSITIVO", firebaseResponse.getId_dispositivo());
                         Log.d("ID_USUARIO_INSTAGRAM", firebaseResponse.getId_usuario_instagram());
+                        Toast.makeText(getApplicationContext(), "Tu dispositivo ya está registrado.", Toast.LENGTH_LONG).show();
                     }
 
                     @Override

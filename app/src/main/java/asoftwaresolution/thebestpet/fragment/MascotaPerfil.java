@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import asoftwaresolution.thebestpet.ActivityConfiguracion;
 import asoftwaresolution.thebestpet.MainActivity;
 import asoftwaresolution.thebestpet.R;
+import asoftwaresolution.thebestpet.Session.SessionManager;
 import asoftwaresolution.thebestpet.adaptadores.MascotasAdaptador;
 import asoftwaresolution.thebestpet.adaptadores.PerfilAdaptador;
 import asoftwaresolution.thebestpet.pojo.Mascota;
@@ -39,6 +40,7 @@ public class MascotaPerfil extends Fragment implements IMascotaPerfil {
     private IMascotaPerfilPresenter presenter;
     private CircularImageView cimgv_perfil;
     private TextView tv_MascotaNamePerfil;
+    private SessionManager manager;
 
     public MascotaPerfil() {
         // Required empty public constructor
@@ -49,16 +51,16 @@ public class MascotaPerfil extends Fragment implements IMascotaPerfil {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_mascota_perfil, container, false);
+        manager = new SessionManager();
 
         cimgv_perfil            = (CircularImageView) view.findViewById(R.id.cimgv_perfil);
         tv_MascotaNamePerfil    = (TextView) view.findViewById(R.id.tv_MascotaNamePerfil);
 
-        if(ConstantesRestApi.KEY_USERNAME != "")
+        if(manager.getPreferences(getContext(),"KEY_USERNAME") != "")
         {
             rvMascotaPerfil = (RecyclerView) view.findViewById(R.id.rvMascotaPerfil);
             presenter = new MascotaPerfilFragmentPresenter(this, getContext());
             presenter.obtenerDataUsuario();
-            presenter.obtenerMediosRecientes();
         }
         else
         {

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import asoftwaresolution.thebestpet.Session.SessionManager;
 import asoftwaresolution.thebestpet.adaptadores.MascotasAdaptador;
 import asoftwaresolution.thebestpet.pojo.Mascota;
 import asoftwaresolution.thebestpet.pojo.Usuario;
@@ -22,10 +23,12 @@ import asoftwaresolution.thebestpet.restApi.ConstantesRestApi;
 
 public class BaseDatos extends SQLiteOpenHelper {
     private Context context;
+    private SessionManager manager;
 
     public BaseDatos(Context context) {
         super(context, ConstantesBaseDatos.DATABASE_NAME, null, ConstantesBaseDatos.DATABASE_VERSION);
         this.context = context;
+        this.manager = new SessionManager();
     }
 
     @Override
@@ -120,7 +123,7 @@ public class BaseDatos extends SQLiteOpenHelper {
 
     public void insertarIdFirebaseUsuario(ContentValues contentValues) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.update(ConstantesBaseDatos.TABLE_USUARIO, contentValues, ConstantesBaseDatos.TABLE_ID_USUARIO_INSTAGRAM + "=" + ConstantesRestApi.KEY_ID_USER_INSTAGRAM, null);
+        db.update(ConstantesBaseDatos.TABLE_USUARIO, contentValues, ConstantesBaseDatos.TABLE_ID_USUARIO_INSTAGRAM + "=" + manager.getPreferences(context,"KEY_ID_USER_INSTAGRAM"), null);
         db.close();
     }
 

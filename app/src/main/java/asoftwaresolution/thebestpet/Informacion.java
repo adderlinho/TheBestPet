@@ -8,19 +8,24 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import asoftwaresolution.thebestpet.Session.SessionManager;
 import asoftwaresolution.thebestpet.presentador.MascotaPerfilFragmentPresenter;
 import asoftwaresolution.thebestpet.restApi.ConstantesRestApi;
+
+import static java.security.AccessController.getContext;
 
 public class Informacion extends AppCompatActivity {
 
     private TextView tvUsernameInfo;
     private TextView tvIdInstagramInfo;
     private TextView tvIdFirebaseInfo;
+    private SessionManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_informacion);
+        manager = new SessionManager();
 
         Toolbar miActionBar = (Toolbar) findViewById(R.id.miActionBar);
         setSupportActionBar(miActionBar);
@@ -40,16 +45,17 @@ public class Informacion extends AppCompatActivity {
             }
         });
 
-        if(ConstantesRestApi.KEY_USERNAME != "")
+        if(manager.getPreferences(getApplicationContext(),"KEY_USERNAME") != "")
         {
-            tvUsernameInfo.setText("Username: " + ConstantesRestApi.KEY_USERNAME.toString());
-            tvIdInstagramInfo.setText("Instagram Id: " + ConstantesRestApi.KEY_ID_USER_INSTAGRAM.toString());
-            tvIdFirebaseInfo.setText("Firebase Id: " + ConstantesRestApi.KEY_ID_USER_FIREBASE.toString());
+            tvUsernameInfo.setText("Username: " + manager.getPreferences(getApplicationContext(),"KEY_USERNAME"));
+            tvIdInstagramInfo.setText("Instagram Id: " + manager.getPreferences(getApplicationContext(),"KEY_ID_USER_INSTAGRAM"));
+            tvIdFirebaseInfo.setText("Firebase Id: " + manager.getPreferences(getApplicationContext(),"KEY_ID_USER_FIREBASE"));
         }
         else
         {
             Intent intent = new Intent(this, ActivityConfiguracion.class);
             startActivity(intent);
+            finish();
         }
     }
 }

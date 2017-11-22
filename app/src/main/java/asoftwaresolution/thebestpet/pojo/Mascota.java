@@ -12,10 +12,11 @@ public class Mascota implements Serializable {
     private String nombre;
     private int likes;
 
-    private String instagram_id;
-    private String urlFoto;
-    private String nombreCompleto;
-    private int instagram_likes;
+    private String  instagram_id;
+    private String  urlFoto;
+    private String  nombreCompleto;
+    private int     instagram_likes;
+    private String  id_media;
 
     public Mascota(int imagen, String nombre, int likes) {
         this.imagen = imagen;
@@ -23,12 +24,13 @@ public class Mascota implements Serializable {
         this.likes = likes;
     }
 
-    public Mascota(String instagram_id, String urlFoto, String nombreCompleto, int instagram_likes)
+    public Mascota(String instagram_id, String urlFoto, String nombreCompleto, int instagram_likes, String id_media)
     {
         this.instagram_id = instagram_id;
         this.urlFoto = urlFoto;
         this.nombreCompleto = nombreCompleto;
         this.instagram_likes = instagram_likes;
+        this.id_media = id_media;
     }
 
     public Mascota() {
@@ -96,5 +98,13 @@ public class Mascota implements Serializable {
 
     public void setNombreCompleto(String nombreCompleto) {
         this.nombreCompleto = nombreCompleto;
+    }
+
+    public String getId_media() {
+        return id_media;
+    }
+
+    public void setId_media(String id_media) {
+        this.id_media = id_media;
     }
 }
